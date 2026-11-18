@@ -1,0 +1,51 @@
+# leafpdf.org on the shared VM. Run through deploy/deploy.sh, which writes deploy/.env.
+#
+# Public traffic arrives only through the shared Traefik edge (Synpse stack, network synapse-edge), which
+# terminates TLS. Traefik needs a certificate covering leafpdf.org and www.leafpdf.org (see README.md).
+
+# An explicit project name: without it Compose names the project after the folder ("deploy"), which other
+# stacks on the same VM share, and "up --remove-orphans" in any of them would remove the others' containers.
+name: leafpdf-site
+
+services:
+  leafpdf-site:
+    image: ${LEAFPDF_IMAGE:-ghcr.io/jagritvats/leafpdf-website:main}
+    container_name: leafpdf-site
+    restart: unless-stopped
+    mem_limit: ${LEAFPDF_MEM_LIMIT:-64m}
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    ports:
+      - "127.0.0.1:${LEAFPDF_LOCAL_PORT:-8120}:8080"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - synapse-edge
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=synapse-edge"
+      - "traefik.http.routers.leafpdf-site.rule=${LEAFPDF_HOST_RULE:-Host(`leafpdf.org`) || Host(`www.leafpdf.org`)}"
+      - "traefik.http.routers.leafpdf-site.entrypoints=websecure"
+      - "traefik.http.routers.leafpdf-site.tls=true"
+      - "traefik.http.routers.leafpdf-site.priority=200"
+      - "traefik.http.services.leafpdf-site.loadbalancer.server.port=8080"
+
+# Created and owned by the Synpse stack: docker network create synapse-edge
+networks:
+  synapse-edge:
+    external: true
+    name: ${TRAEFIK_NETWORK:-synapse-edge}

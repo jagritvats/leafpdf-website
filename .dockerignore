@@ -1,0 +1,10 @@
+.git/
+.github/
+tools/
+out/
+README.md
+LICENSE
+wrangler.jsonc
+deploy/docker-compose.yml
+deploy/deploy.sh
+deploy/.env

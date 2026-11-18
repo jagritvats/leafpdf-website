@@ -1,0 +1,121 @@
+name: Deploy to VM
+
+# Manual only (Actions > Deploy to VM > Run workflow): builds the arm64 image, pushes it to GHCR and restarts
+# leafpdf.org on the VM. Not needed for the Cloudflare Workers route, which deploys on its own.
+# Kill switch: the repository variable DEPLOY_ENABLED must be 'true'; anything else skips the run.
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-vm
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  REGISTRY: ghcr.io
+  DEPLOY_PATH: ${{ vars.DEPLOY_PATH || '/opt/leafpdf/site' }}
+
+jobs:
+  build:
+    name: Check, build and publish
+    # The image is nginx plus COPY steps only (no RUN), so buildx produces the arm64 image without QEMU.
+    runs-on: ubuntu-latest
+    if: ${{ vars.DEPLOY_ENABLED == 'true' }}
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image_ref: ${{ steps.image.outputs.image_ref }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check the site (links, CSP rules, no local paths)
+        run: python3 tools/check_site.py
+
+      - name: Resolve image name
+        id: image
+        run: |
+          image_repo="$(echo "${REGISTRY}/${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')"
+          echo "image_repo=${image_repo}" >> "$GITHUB_OUTPUT"
+          echo "image_ref=${image_repo}:${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile
+          platforms: linux/arm64
+          push: true
+          tags: |
+            ${{ steps.image.outputs.image_ref }}
+            ${{ steps.image.outputs.image_repo }}:main
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+
+  deploy:
+    name: Deploy to VM
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Configure SSH
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      - name: Copy deploy folder
+        env:
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
+        run: |
+          target="${DEPLOY_USER}@${DEPLOY_HOST}"
+          # Create the folder; if /opt is root-owned, fall back to passwordless sudo and hand it to the deploy user.
+          ssh -i ~/.ssh/deploy_key -p "${DEPLOY_PORT}" "$target" \
+            "mkdir -p '${DEPLOY_PATH}/deploy' 2>/dev/null || { sudo -n mkdir -p '${DEPLOY_PATH}/deploy' && sudo -n chown -R \"\$(id -un):\$(id -gn)\" '${DEPLOY_PATH}'; }"
+          scp -i ~/.ssh/deploy_key -P "${DEPLOY_PORT}" deploy/docker-compose.yml deploy/deploy.sh \
+            "$target:${DEPLOY_PATH}/deploy/"
+
+      - name: Pull and restart
+        env:
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
+          IMAGE_REF: ${{ needs.build.outputs.image_ref }}
+          GHCR_USER: ${{ github.actor }}
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LEAFPDF_HOST_RULE: ${{ vars.LEAFPDF_HOST_RULE }}
+          LEAFPDF_LOCAL_PORT: ${{ vars.LEAFPDF_LOCAL_PORT }}
+        run: |
+          {
+            printf 'export LEAFPDF_IMAGE=%q\n' "$IMAGE_REF"
+            printf 'export GHCR_USER=%q\n' "$GHCR_USER"
+            printf 'export GHCR_TOKEN=%q\n' "$GHCR_TOKEN"
+            printf 'export LEAFPDF_HOST_RULE=%q\n' "$LEAFPDF_HOST_RULE"
+            printf 'export LEAFPDF_LOCAL_PORT=%q\n' "$LEAFPDF_LOCAL_PORT"
+            printf 'bash %q/deploy/deploy.sh\n' "$DEPLOY_PATH"
+          } | ssh -i ~/.ssh/deploy_key -p "${DEPLOY_PORT}" "${DEPLOY_USER}@${DEPLOY_HOST}" "bash -s"
