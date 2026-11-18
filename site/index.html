@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leaf: a local PDF editor for Windows and Linux</title>
+<meta name="description" content="Leaf is a native PDF editor for Windows and Linux that works offline. Edit existing text, redact for real, fill and sign forms, add digital signatures, make scans searchable and organize pages. Open source.">
+<link rel="canonical" href="https://leafpdf.org/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f8f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1a14" media="(prefers-color-scheme: dark)">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Leaf">
+<meta property="og:url" content="https://leafpdf.org/">
+<meta property="og:title" content="Leaf: edit PDFs, keep them yours">
+<meta property="og:description" content="A native PDF editor for Windows and Linux. Works offline, so nothing leaves your computer.">
+<meta property="og:image" content="https://leafpdf.org/img/og-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Leaf: Edit PDFs. Keep them yours. A native PDF editor for Windows and Linux that works offline, next to a Leaf window editing a report.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Leaf: edit PDFs, keep them yours">
+<meta name="twitter:description" content="A native PDF editor for Windows and Linux. Works offline, so nothing leaves your computer.">
+<meta name="twitter:image" content="https://leafpdf.org/img/og-1200x630.png">
+<meta name="twitter:image:alt" content="Leaf: Edit PDFs. Keep them yours. A native PDF editor for Windows and Linux that works offline, next to a Leaf window editing a report.">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/theme.js"></script>
+<script src="/assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Leaf, home">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#43c463"/><stop offset="1" stop-color="#1f8a3b"/></linearGradient></defs><rect x="1" y="1" width="22" height="22" rx="5.5" fill="url(#lg)"/><g transform="translate(12 12) scale(.82) translate(-12 -12.5)"><path d="M4.5 19.5C3 10 9 3.5 20 4C20.5 15 14 21 4.5 19.5Z" fill="#fff" fill-opacity=".94"/><path d="M5 19L14.5 9.5" stroke="#2a9a48" stroke-width="1.3" stroke-linecap="round"/></g></svg>
+      Leaf
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a class="nav-hide-sm" href="#features">Features</a>
+      <a class="nav-hide-sm" href="#privacy">Privacy</a>
+      <a href="#download">Download</a>
+      <a href="https://github.com/jagritvats/Leaf-PDF-Viewer">GitHub</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme" hidden>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <h1 id="hero-title"><span class="edit-line"><span>Edit PDFs.</span><span>Keep them <span class="nowrap">yours.<span class="caret" aria-hidden="true"></span></span></span></span></h1>
+    <p class="hero-lede">A native PDF editor for Windows and Linux. Leaf works offline, so your documents never leave your computer.</p>
+    <div class="hero-actions">
+      <a class="button" id="hero-download" data-asset="setup" href="https://github.com/jagritvats/Leaf-PDF-Viewer/releases/latest">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
+        <span class="label">Download for Windows</span> <span class="size"></span>
+      </a>
+      <a class="text-link" id="hero-other" href="#download">Linux and other downloads</a>
+      <p class="hero-note"><span data-version>Latest version</span>. Free and open source, for Windows 10 and 11 and Linux.</p>
+    </div>
+    <figure class="shot hero-shot">
+  <picture>
+    <source type="image/webp" media="(prefers-color-scheme: dark)" data-theme-src="dark" srcset="/img/v1/hero-dark-640.webp 640w, /img/v1/hero-dark-960.webp 960w, /img/v1/hero-dark-1280.webp 1280w, /img/v1/hero-dark-1600.webp 1600w, /img/v1/hero-dark-1920.webp 1920w" sizes="(min-width: 80rem) 75rem, calc(100vw - 2rem)">
+    <source type="image/webp" srcset="/img/v1/hero-light-640.webp 640w, /img/v1/hero-light-960.webp 960w, /img/v1/hero-light-1280.webp 1280w, /img/v1/hero-light-1600.webp 1600w, /img/v1/hero-light-1920.webp 1920w" sizes="(min-width: 80rem) 75rem, calc(100vw - 2rem)">
+    <img src="/img/v1/hero-light-1280.jpg" width="1920" height="1080" alt="Leaf with a research report open: highlighted passages and sticky notes on the page, and a comment thread with replies in the Comments panel." fetchpriority="high" decoding="async">
+  </picture>
+    </figure>
+  </div>
+</section>
+
+<div class="features wrap" id="features">
+
+  <section class="feature lead" aria-labelledby="f-edit">
+    <p class="margin-note"><kbd>I</kbd><span class="where">Edit text tool</span></p>
+    <div class="feature-text">
+      <h2 id="f-edit">Change the words that are already there.</h2>
+      <p>Click a line and type. Leaf rewrites it in the document's own embedded font, at the same size, color and angle, and <kbd>Tab</kbd> switches between a single line and the whole paragraph. When you save, the file is rewritten so the old words are really gone, not hidden underneath.</p>
+      <p class="aside">Find &amp; replace (<kbd>Ctrl</kbd> <kbd>H</kbd>) uses the same engine across the whole document. Where Leaf can't make a change faithfully, for example in Arabic, Hebrew or Indic scripts, or text without a reliable character mapping, it tells you why instead of guessing.</p>
+    </div>
+    <figure class="shot feature-media">
+  <picture>
+    <source type="image/webp" media="(prefers-color-scheme: dark)" data-theme-src="dark" srcset="/img/v1/edit-text-dark-480.webp 480w, /img/v1/edit-text-dark-720.webp 720w, /img/v1/edit-text-dark-1040.webp 1040w, /img/v1/edit-text-dark-1300.webp 1300w" sizes="(min-width: 80rem) 66rem, (min-width: 48rem) calc(100vw - 15rem), calc(100vw - 2rem)">
+    <source type="image/webp" srcset="/img/v1/edit-text-light-480.webp 480w, /img/v1/edit-text-light-720.webp 720w, /img/v1/edit-text-light-1040.webp 1040w, /img/v1/edit-text-light-1300.webp 1300w" sizes="(min-width: 80rem) 66rem, (min-width: 48rem) calc(100vw - 15rem), calc(100vw - 2rem)">
+    <img src="/img/v1/edit-text-light-720.jpg" width="1300" height="730" alt="A report in Leaf with one line in an edit outline and the word “promising” selected, ready to be retyped in the document&#x27;s own font." loading="lazy" decoding="async">
+  </picture>
+    </figure>
+  </section>
+
+  <section class="feature" aria-labelledby="f-redact">
+    <p class="margin-note"><kbd>X</kbd><span class="where">Redact tool</span></p>
+    <div class="feature-text">
+      <h2 id="f-redact">Redaction that really removes.</h2>
+      <p>Drag across text or draw a box. When you save, the text, image pixels, drawings, annotations, form fields and links under each mark are removed from the file, not covered with a black rectangle.</p>
+      <p>Search &amp; redact finds email addresses, phone numbers, card numbers, IBANs, dates or a pattern of your own, and lists every hit for you to check before anything is marked.</p>
+      <p class="aside">Sanitize document strips metadata, JavaScript, attachments, comments, hidden text and more. If a redaction would break a digital signature, Leaf names it before you save.</p>
+    </div>
+    <figure class="shot feature-media">
+  <picture>
+    <source type="image/webp" media="(prefers-color-scheme: dark)" data-theme-src="dark" srcset="/img/v1/redact-dark-480.webp 480w, /img/v1/redact-dark-720.webp 720w, /img/v1/redact-dark-1040.webp 1040w, /img/v1/redact-dark-1440.webp 1440w" sizes="(min-width: 80rem) 37rem, (min-width: 68rem) 45vw, (min-width: 48rem) calc(100vw - 15rem), calc(100vw - 2rem)">
+    <source type="image/webp" srcset="/img/v1/redact-light-480.webp 480w, /img/v1/redact-light-720.webp 720w, /img/v1/redact-light-1040.webp 1040w, /img/v1/redact-light-1440.webp 1440w" sizes="(min-width: 80rem) 37rem, (min-width: 68rem) 45vw, (min-width: 48rem) calc(100vw - 15rem), calc(100vw - 2rem)">
+    <img src="/img/v1/redact-light-720.jpg" width="1720" height="950" alt="An invoice in Leaf: email addresses marked for redaction, the Search &amp; redact dialog listing phone numbers it found, and the Redactions panel." loading="lazy" decoding="async">
+  </picture>
+    </figure>
+  </section>
+
+  <section class="feature" aria-labelledby="f-forms">
+    <p class="margin-note"><span class="where">Forms menu</span></p>
+    <div class="feature-text">
+      <h2 id="f-forms">Fill it, sign it, done.</h2>
+      <p>Type into fields, tick boxes and pick from lists. <kbd>Tab</kbd> follows the document's own field order, and required fields are marked. Then add a signature you drew, typed or imported: Leaf removes the background and keeps it in your library for next time.</p>
+      <p class="aside">You can also create new fields, export and import form data as JSON or XFDF, and save a flattened copy.</p>
+    </div>
+    <figure class="shot feature-media narrow">
+  <picture>
+    <source type="image/webp" media="(prefers-color-scheme: dark)" data-theme-src="dark" srcset="/img/v1/forms-dark-480.webp 480w, /img/v1/forms-dark-644.webp 644w" sizes="(min-width: 48rem) 26rem, calc(100vw - 2rem)">
+    <source type="image/webp" srcset="/img/v1/forms-light-480.webp 480w, /img/v1/forms-light-644.webp 644w" sizes="(min-width: 48rem) 26rem, calc(100vw - 2rem)">
+    <img src="/img/v1/forms-light-644.jpg" width="644" height="716" alt="A rental application form in Leaf with filled-in fields, ticked boxes, a handwritten signature and an empty required field outlined in red." loading="lazy" decoding="async">
+  </picture>
+    </figure>
+  </section>
+
+  <section class="feature" aria-labelledby="f-sign">
+    <p class="margin-note"><kbd>F12</kbd><span class="where">Signatures panel</span></p>
+    <div class="feature-text">
+      <h2 id="f-sign">Sign with your own certificate.</h2>
+      <p>Leaf adds PAdES digital signatures with your .p12 or .pfx file, or with a self-signed certificate it creates for you. Make them visible, with your handwritten signature, or invisible, add a timestamp from a server you choose, or certify a document.</p>
+      <p>Open a signed PDF and Leaf checks each signature's integrity, later changes, trust and timestamp, offline. Saving only adds to a signed file, so existing signatures stay valid.</p>
+    </div>
+    <figure class="shot feature-media">
+  <picture>
+    <source type="image/webp" media="(prefers-color-scheme: dark)" data-theme-src="dark" srcset="/img/v1/signature-dark-480.webp 480w, /img/v1/signature-dark-720.webp 720w, /img/v1/signature-dark-1040.webp 1040w, /img/v1/signature-dark-1440.webp 1440w" sizes="(min-width: 80rem) 37rem, (min-width: 68rem) 45vw, (min-width: 48rem) calc(100vw - 15rem), calc(100vw - 2rem)">
+    <source type="image/webp" srcset="/img/v1/signature-light-480.webp 480w, /img/v1/signature-light-720.webp 720w, /img/v1/signature-light-1040.webp 1040w, /img/v1/signature-light-1440.webp 1440w" sizes="(min-width: 80rem) 37rem, (min-width: 68rem) 45vw, (min-width: 48rem) calc(100vw - 15rem), calc(100vw - 2rem)">
+    <img src="/img/v1/signature-light-720.jpg" width="1920" height="865" alt="A services agreement in Leaf with two visible digital signatures, a banner saying both are valid, and the Signatures panel showing integrity and trust for each signer." loading="lazy" decoding="async">
+  </picture>
+    </figure>
+  </section>
+
+  <section class="feature" aria-labelledby="f-ocr">
+    <p class="margin-note"><span class="where">Document › Recognize text</span></p>
+    <div class="feature-text">
+      <h2 id="f-ocr">Make scans searchable.</h2>
+      <p>Scanned pages become text you can search, select and copy. Recognition runs in the background with per-page progress, and Leaf offers it when a document looks scanned.</p>
+      <p>English is built in. Add languages… downloads others, such as Hindi, Arabic, Cyrillic or Chinese, when you ask for them. Only the language data is downloaded; your documents stay put.</p>
+    </div>
+    <figure class="shot feature-media">
+  <picture>
+    <source type="image/webp" media="(prefers-color-scheme: dark)" data-theme-src="dark" srcset="/img/v1/ocr-dark-480.webp 480w, /img/v1/ocr-dark-720.webp 720w, /img/v1/ocr-dark-1040.webp 1040w, /img/v1/ocr-dark-1200.webp 1200w" sizes="(min-width: 80rem) 37rem, (min-width: 68rem) 45vw, (min-width: 48rem) calc(100vw - 15rem), calc(100vw - 2rem)">
+    <source type="image/webp" srcset="/img/v1/ocr-light-480.webp 480w, /img/v1/ocr-light-720.webp 720w, /img/v1/ocr-light-1040.webp 1040w, /img/v1/ocr-light-1200.webp 1200w" sizes="(min-width: 80rem) 37rem, (min-width: 68rem) 45vw, (min-width: 48rem) calc(100vw - 15rem), calc(100vw - 2rem)">
+    <img src="/img/v1/ocr-light-720.jpg" width="1200" height="702" alt="A scanned letter in Leaf after text recognition: a search for “water” highlights its four matches on the scanned page." loading="lazy" decoding="async">
+  </picture>
+    </figure>
+  </section>
+
+  <section class="feature" aria-labelledby="f-pages">
+    <p class="margin-note"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>O</kbd><span class="where">Organize pages</span></p>
+    <div class="feature-text">
+      <h2 id="f-pages">Pages, your way.</h2>
+      <p>Drag pages into order in the sidebar or in the full-window organizer. Rotate, delete and duplicate them, insert pages from another PDF, or copy and paste them between windows.</p>
+      <p>Extract a range such as “1-3, 7, 10-”, split every few pages, or crop by dragging a rectangle, by margins, or by trimming white space automatically.</p>
+    </div>
+    <figure class="shot feature-media">
+  <picture>
+    <source type="image/webp" media="(prefers-color-scheme: dark)" data-theme-src="dark" srcset="/img/v1/organize-dark-480.webp 480w, /img/v1/organize-dark-720.webp 720w, /img/v1/organize-dark-1040.webp 1040w, /img/v1/organize-dark-1440.webp 1440w" sizes="(min-width: 80rem) 37rem, (min-width: 68rem) 45vw, (min-width: 48rem) calc(100vw - 15rem), calc(100vw - 2rem)">
+    <source type="image/webp" srcset="/img/v1/organize-light-480.webp 480w, /img/v1/organize-light-720.webp 720w, /img/v1/organize-light-1040.webp 1040w, /img/v1/organize-light-1440.webp 1440w" sizes="(min-width: 80rem) 37rem, (min-width: 68rem) 45vw, (min-width: 48rem) calc(100vw - 15rem), calc(100vw - 2rem)">
+    <img src="/img/v1/organize-light-720.jpg" width="1920" height="915" alt="Leaf&#x27;s page organizer: eight pages from three documents as thumbnails in a grid, three of them selected." loading="lazy" decoding="async">
+  </picture>
+    </figure>
+  </section>
+
+  <section class="feature" aria-labelledby="f-annotate">
+    <p class="margin-note"><kbd>F9</kbd><span class="where">Comments panel</span></p>
+    <div class="feature-text">
+      <h2 id="f-annotate">Mark it up.</h2>
+      <p>Highlights, sticky notes with threaded replies, freehand ink with pen pressure, shapes, arrows and formatted text boxes in any installed font. Comments already in a file, from any app, can be moved, restyled or deleted, and the ones you don't touch are saved exactly as they were.</p>
+      <p class="aside">Undo is unlimited, with a History panel. Whiteout only covers what's under it; to remove content, use Redact.</p>
+    </div>
+    <div class="feature-media">
+      <ul class="keys" aria-label="Single-key tools">
+        <li><kbd>H</kbd> Highlight</li>
+        <li><kbd>N</kbd> Sticky note</li>
+        <li><kbd>D</kbd> Draw</li>
+        <li><kbd>T</kbd> Text box</li>
+        <li><kbd>R</kbd> Rectangle</li>
+        <li><kbd>E</kbd> Ellipse</li>
+        <li><kbd>L</kbd> Line</li>
+        <li><kbd>A</kbd> Arrow</li>
+        <li><kbd>W</kbd> Whiteout</li>
+        <li><kbd>V</kbd> Select</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="feature lead" aria-labelledby="f-look">
+    <p class="margin-note"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>F</kbd><span class="where">Focus mode</span></p>
+    <div class="feature-text">
+      <h2 id="f-look">Calm to read, at home on Windows 11.</h2>
+      <p>Leaf follows Windows 11: rounded panels, your accent color, a matching title bar and the system font, in light or dark as your system is set. On Linux it follows KDE and GNOME.</p>
+      <p>Focus mode hides everything but the page. A floating toolbar and a page and zoom bar slide away while you read; <kbd>Esc</kbd> brings the window back. The start screen shows your recent files as page previews, and each file reopens where you left off.</p>
+    </div>
+    <div class="feature-media pair">
+      <figure class="shot">
+  <picture>
+    <source type="image/webp" media="(prefers-color-scheme: dark)" data-theme-src="dark" srcset="/img/v1/focus-dark-480.webp 480w, /img/v1/focus-dark-720.webp 720w, /img/v1/focus-dark-1040.webp 1040w, /img/v1/focus-dark-1440.webp 1440w" sizes="(min-width: 80rem) 32rem, (min-width: 48rem) calc(50vw - 9rem), calc(100vw - 2rem)">
+    <source type="image/webp" srcset="/img/v1/focus-light-480.webp 480w, /img/v1/focus-light-720.webp 720w, /img/v1/focus-light-1040.webp 1040w, /img/v1/focus-light-1440.webp 1440w" sizes="(min-width: 80rem) 32rem, (min-width: 48rem) calc(50vw - 9rem), calc(100vw - 2rem)">
+    <img src="/img/v1/focus-light-720.jpg" width="1920" height="1080" alt="Leaf in Focus mode: a report fills the window, with only a floating toolbar at the top and a page and zoom bar at the bottom." loading="lazy" decoding="async">
+  </picture>
+        <figcaption>Focus mode</figcaption>
+      </figure>
+      <figure class="shot">
+  <picture>
+    <source type="image/webp" media="(prefers-color-scheme: dark)" data-theme-src="dark" srcset="/img/v1/start-dark-480.webp 480w, /img/v1/start-dark-720.webp 720w, /img/v1/start-dark-1040.webp 1040w, /img/v1/start-dark-1240.webp 1240w" sizes="(min-width: 80rem) 32rem, (min-width: 48rem) calc(50vw - 9rem), calc(100vw - 2rem)">
+    <source type="image/webp" srcset="/img/v1/start-light-480.webp 480w, /img/v1/start-light-720.webp 720w, /img/v1/start-light-1040.webp 1040w, /img/v1/start-light-1240.webp 1240w" sizes="(min-width: 80rem) 32rem, (min-width: 48rem) calc(50vw - 9rem), calc(100vw - 2rem)">
+    <img src="/img/v1/start-light-720.jpg" width="1240" height="710" alt="Leaf&#x27;s start screen, “Pick up where you left off”, with five recent files shown as page previews." loading="lazy" decoding="async">
+  </picture>
+        <figcaption>The start screen</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="feature" aria-labelledby="f-share">
+    <p class="margin-note"><span class="where">File › Share</span></p>
+    <div class="feature-text">
+      <h2 id="f-share">Right where your files are.</h2>
+      <p>Share opens the Windows share sheet. Copy file puts the PDF on the clipboard for a folder, an email or a chat, and Email… attaches it in your mail app. With unsaved changes, Leaf asks whether to save first or share a copy.</p>
+      <p>In File Explorer, right-click a PDF for Edit with Leaf, or select several and choose Combine with Leaf to get one new document. Leaf can also be your default PDF app; Windows asks you to confirm that in Default apps.</p>
+    </div>
+    <figure class="feature-media">
+      <div class="menu-mock" role="img" aria-label="File Explorer's right-click menu on selected PDFs, with Edit with Leaf and Combine with Leaf.">
+        <ul aria-hidden="true">
+          <li><span class="blank"></span>Open</li>
+          <li><img class="ico" src="/favicon.svg" alt="" width="18" height="18">Edit with Leaf</li>
+          <li class="hot"><img class="ico" src="/favicon.svg" alt="" width="18" height="18">Combine with Leaf</li>
+          <li class="sep"></li>
+          <li><span class="blank"></span>Open with<span class="more">›</span></li>
+          <li><span class="blank"></span>Send to<span class="more">›</span></li>
+        </ul>
+      </div>
+      <figcaption class="menu-caption">On Windows 11 these are under Show more options. Linux gets a Dolphin service menu, and <code>leaf --merge a.pdf b.pdf</code> does the same from a terminal.</figcaption>
+    </figure>
+  </section>
+
+  <section class="feature" aria-labelledby="f-dev">
+    <p class="margin-note"><span class="where"><code>leaf --help</code></span></p>
+    <div class="feature-text">
+      <h2 id="f-dev">For developers and agents.</h2>
+      <p>The same engine runs without a window. The <code>leaf</code> command reads text and form fields, fills forms, redacts, recognizes text, merges, splits, crops, signs and more.</p>
+      <p>Edit sets describe changes as JSON: review them in Leaf and apply them as one undo step, or apply them from the command line. <code>leaf mcp</code> is an MCP server, so agents can read PDFs, find text and write new files. It never overwrites a file and never signs. With the agent link turned on (it's off by default), agents can suggest edits to your open documents, and nothing changes until you accept.</p>
+      <ul class="doc-links">
+        <li><a href="https://github.com/jagritvats/Leaf-PDF-Viewer/blob/main/docs/agents.md">MCP server and agent link</a></li>
+        <li><a href="https://github.com/jagritvats/Leaf-PDF-Viewer/blob/main/docs/edit-set.md">Edit set format</a></li>
+        <li><a href="https://github.com/jagritvats/Leaf-PDF-Viewer#run">Command line</a></li>
+      </ul>
+    </div>
+    <div class="feature-media">
+<pre class="code" tabindex="0" aria-label="Command line examples"><code><span class="c"># the words on every page, in reading order</span>
+<span class="p">$ </span>leaf text report.pdf
+
+<span class="c"># remove every email address and phone number</span>
+<span class="p">$ </span>leaf redact contract.pdf --preset email --preset phone
+
+<span class="c"># make a scan searchable</span>
+<span class="p">$ </span>leaf ocr scan.pdf -o searchable.pdf
+
+<span class="c"># apply an edit set</span>
+<span class="p">$ </span>leaf apply in.pdf changes.json -o out.pdf
+
+<span class="c"># the MCP server, on stdio</span>
+<span class="p">$ </span>leaf mcp</code></pre>
+    </div>
+  </section>
+
+</div>
+
+<section class="privacy-band" id="privacy" aria-labelledby="privacy-title">
+  <svg class="band-leaf" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 19.5C3 10 9 3.5 20 4C20.5 15 14 21 4.5 19.5Z" fill="#fff"/></svg>
+  <div class="wrap">
+    <div>
+      <h2 id="privacy-title">Your documents stay on your computer.</h2>
+      <p class="lead-p">Leaf has no accounts, analytics, telemetry, crash reporting or ads. Documents are opened, edited and saved on your computer and are never uploaded anywhere.</p>
+      <p>This website works the same way: no cookies, no analytics, no tracking. The download buttons ask GitHub which release is the latest, and that is the only request this page makes to another site.</p>
+    </div>
+    <div>
+      <h3>Leaf goes online only when you ask it to</h3>
+      <ul>
+        <li><strong>Extra OCR languages.</strong> Add languages… downloads the files you pick from the Tesseract project on GitHub. No document content is sent.</li>
+        <li><strong>Timestamped signatures.</strong> If you enter a timestamp server, it receives a hash of the signature, as the PAdES standard requires, never the document.</li>
+        <li><strong>Links in documents.</strong> A web link you click opens in your browser.</li>
+      </ul>
+      <p><a href="/privacy/">Read the privacy policy</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="downloads" id="download" aria-labelledby="download-title" data-store-live="false">
+  <div class="wrap">
+    <div class="downloads-head">
+      <h2 id="download-title">Download Leaf</h2>
+      <p><span data-version="long">The latest release is on GitHub.</span> <a data-release href="https://github.com/jagritvats/Leaf-PDF-Viewer/releases/latest">What's new</a></p>
+    </div>
+
+    <div class="platforms">
+      <section class="platform" aria-labelledby="dl-win">
+        <h3 id="dl-win">Windows</h3>
+        <div class="file">
+          <div>
+            <h4>Installer <span class="tag">(recommended)</span></h4>
+            <p>Windows 10 and 11, x64. Installs for your user only, with no admin prompt.</p>
+          </div>
+          <a class="button" data-asset="setup" href="https://github.com/jagritvats/Leaf-PDF-Viewer/releases/latest">Download <span class="size"></span></a>
+        </div>
+        <div class="file">
+          <div>
+            <h4>Portable zip</h4>
+            <p>Unzip anywhere and run Leaf.exe. Includes leaf-cli.exe for the command line.</p>
+          </div>
+          <a class="button quiet" data-asset="zip" href="https://github.com/jagritvats/Leaf-PDF-Viewer/releases/latest">Download <span class="size"></span></a>
+        </div>
+        <div class="file">
+          <div>
+            <h4>Microsoft Store</h4>
+            <p>Leaf PDF Editor, published by Synpse Labs.</p>
+          </div>
+          <span class="soon store-soon">Coming soon</span>
+          <a class="button quiet store-live" href="https://apps.microsoft.com/detail/9P865XPB1QP3">Get it from the Store</a>
+        </div>
+      </section>
+
+      <section class="platform" aria-labelledby="dl-linux">
+        <h3 id="dl-linux">Linux</h3>
+        <div class="file">
+          <div>
+            <h4>AppImage</h4>
+            <p>x86_64. Make it executable (<code>chmod +x</code>), then run it.</p>
+          </div>
+          <a class="button" data-asset="appimage" href="https://github.com/jagritvats/Leaf-PDF-Viewer/releases/latest">Download <span class="size"></span></a>
+        </div>
+        <div class="file">
+          <div>
+            <h4>Tarball</h4>
+            <p>The app folder with its desktop entry, metadata, icons and Dolphin service menu, for packaging (AUR, Flatpak).</p>
+          </div>
+          <a class="button quiet" data-asset="tarball" href="https://github.com/jagritvats/Leaf-PDF-Viewer/releases/latest">Download <span class="size"></span></a>
+        </div>
+      </section>
+    </div>
+
+    <div class="req">
+      <div>
+        <h3>System requirements</h3>
+        <p>Windows 10 or 11, 64-bit (x64). Linux on x86_64 with glibc 2.34 or newer and <code>libOpenGL.so.0</code> (<code>libopengl0</code> on Debian and Ubuntu).</p>
+      </div>
+      <div>
+        <h3>If Windows warns you</h3>
+        <p>The builds aren't code-signed yet, so SmartScreen may show a warning the first time. Choose More info, then Run anyway.</p>
+      </div>
+      <div>
+        <h3>Check your download</h3>
+        <p>Compare the file's SHA-256 with <a data-asset="sums" href="https://github.com/jagritvats/Leaf-PDF-Viewer/releases/latest">SHA256SUMS.txt</a>. Older versions are on the <a href="https://github.com/jagritvats/Leaf-PDF-Viewer/releases">releases page</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="open" aria-labelledby="open-title">
+  <div class="wrap">
+    <div class="rail-space"></div>
+    <div class="body">
+      <h2 id="open-title">Open source, under the AGPL.</h2>
+      <p>Leaf is free software under the GNU Affero General Public License v3.0 or later, the same license as the MuPDF engine it's built on. Read the code, report a problem or send a change.</p>
+      <ul class="doc-links">
+        <li><a href="https://github.com/jagritvats/Leaf-PDF-Viewer">Source code on GitHub</a></li>
+        <li><a href="https://github.com/jagritvats/Leaf-PDF-Viewer/blob/main/CONTRIBUTING.md">How to contribute</a></li>
+        <li><a href="https://github.com/jagritvats/Leaf-PDF-Viewer/issues">Report an issue</a></li>
+        <li><a href="https://github.com/jagritvats/Leaf-PDF-Viewer/blob/main/LICENSE">License</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© 2026 Synpse Labs</p>
+    <nav aria-label="Footer">
+      <a href="/privacy/">Privacy</a>
+      <a href="https://github.com/jagritvats/Leaf-PDF-Viewer/blob/main/LICENSE">License</a>
+      <a href="https://github.com/jagritvats/Leaf-PDF-Viewer">GitHub</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

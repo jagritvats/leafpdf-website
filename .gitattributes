@@ -1,0 +1,7 @@
+# Store text with LF line endings whatever the machine that commits it uses: the shell scripts and nginx
+# config run on Linux.
+* text=auto eol=lf
+*.png binary
+*.webp binary
+*.jpg binary
+*.ico binary

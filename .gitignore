@@ -1,0 +1,7 @@
+__pycache__/
+out/
+deploy/.env
+node_modules/
+.wrangler/
+.DS_Store
+Thumbs.db

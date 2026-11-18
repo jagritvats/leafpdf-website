@@ -1,0 +1,4 @@
+# Path redirects only: Workers static assets don't support domain-level rules here, so www -> apex is a
+# Cloudflare redirect rule (see README.md).
+/privacy.html /privacy/ 301
+/download /#download 302
