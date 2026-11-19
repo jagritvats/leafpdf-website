@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digitally sign a PDF with a certificate, free | Leaf</title>
+<meta name="description" content="Add a PAdES digital signature to a PDF with your .p12 or .pfx certificate, or one Leaf creates. Visible or invisible, with optional timestamp.">
+<link rel="canonical" href="https://leafpdf.org/guides/digitally-sign-pdf/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Leaf">
+<meta property="og:url" content="https://leafpdf.org/guides/digitally-sign-pdf/">
+<meta property="og:title" content="Digitally sign a PDF with a certificate, free | Leaf">
+<meta property="og:description" content="Add a PAdES digital signature to a PDF with your .p12 or .pfx certificate, or one Leaf creates. Visible or invisible, with optional timestamp.">
+<meta property="og:image" content="https://leafpdf.org/img/og-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Leaf: Edit PDFs. Keep them yours. A native PDF editor for Windows and Linux that works offline, next to a Leaf window editing a report.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Digitally sign a PDF with a certificate, free | Leaf">
+<meta name="twitter:description" content="Add a PAdES digital signature to a PDF with your .p12 or .pfx certificate, or one Leaf creates. Visible or invisible, with optional timestamp.">
+<meta name="twitter:image" content="https://leafpdf.org/img/og-1200x630.png">
+<meta name="twitter:image:alt" content="Leaf: Edit PDFs. Keep them yours. A native PDF editor for Windows and Linux that works offline, next to a Leaf window editing a report.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f8f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1a14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://leafpdf.org/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Guides",
+     "item": "https://leafpdf.org/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Add a digital signature to a PDF with your certificate",
+     "item": "https://leafpdf.org/guides/digitally-sign-pdf/"
+    }
+   ]
+  },
+  {
+   "@type": "HowTo",
+   "name": "Add a digital signature to a PDF with your certificate",
+   "description": "Add a PAdES digital signature to a PDF with your .p12 or .pfx certificate, or one Leaf creates. Visible or invisible, with optional timestamp.",
+   "url": "https://leafpdf.org/guides/digitally-sign-pdf/",
+   "inLanguage": "en",
+   "image": "https://leafpdf.org/img/og-1200x630.png",
+   "datePublished": "2026-11-19",
+   "dateModified": "2026-11-19",
+   "tool": [
+    {
+     "@type": "HowToTool",
+     "name": "Leaf 0.2.2"
+    }
+   ],
+   "step": [
+    {
+     "@type": "HowToStep",
+     "position": 1,
+     "name": "Open the PDF and save your changes",
+     "text": "Signing works on the saved file. If you have unsaved changes, Leaf asks you to save them first.",
+     "url": "https://leafpdf.org/guides/digitally-sign-pdf/#step-1"
+    },
+    {
+     "@type": "HowToStep",
+     "position": 2,
+     "name": "Start signing",
+     "text": "Choose Document › Sign digitally….",
+     "url": "https://leafpdf.org/guides/digitally-sign-pdf/#step-2"
+    },
+    {
+     "@type": "HowToStep",
+     "position": 3,
+     "name": "Choose your certificate",
+     "text": "Pick your .p12 or .pfx file with Browse… and enter its password. No certificate? Create a self-signed certificate… makes one from your name, email and organization, protected by a password you choose.",
+     "url": "https://leafpdf.org/guides/digitally-sign-pdf/#step-3"
+    },
+    {
+     "@type": "HowToStep",
+     "position": 4,
+     "name": "Decide how it looks",
+     "text": "Under Place, choose an empty signature field in the form, New box to draw one on the page next, or Invisible (no mark on the page). For a visible signature, the appearance can be text only or your handwritten signature, with Show name, date and reason if you like. Reason, Location and Contact are optional.",
+     "url": "https://leafpdf.org/guides/digitally-sign-pdf/#step-4"
+    },
+    {
+     "@type": "HowToStep",
+     "position": 5,
+     "name": "Set the options",
+     "text": "Certify is meant for the first signature, usually the author's: it states which later changes are allowed (none; form filling and signing; or form filling, signing and comments). Leave it at No — approval signature otherwise. A Timestamp server is optional: enter one and the server receives a hash of the signature, never the document.",
+     "url": "https://leafpdf.org/guides/digitally-sign-pdf/#step-5"
+    },
+    {
+     "@type": "HowToStep",
+     "position": 6,
+     "name": "Sign",
+     "text": "Save the signed document as a new file (Leaf suggests name-signed.pdf) or sign this file in place. The signature is added to the end of the file, so earlier signatures stay valid.",
+     "url": "https://leafpdf.org/guides/digitally-sign-pdf/#step-6"
+    }
+   ]
+  }
+ ]
+}
+</script>
+<script src="/assets/theme.js"></script>
+<script src="/assets/site.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Leaf, home">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#43c463"/><stop offset="1" stop-color="#1f8a3b"/></linearGradient></defs><rect x="1" y="1" width="22" height="22" rx="5.5" fill="url(#lg)"/><g transform="translate(12 12) scale(.82) translate(-12 -12.5)"><path d="M4.5 19.5C3 10 9 3.5 20 4C20.5 15 14 21 4.5 19.5Z" fill="#fff" fill-opacity=".94"/><path d="M5 19L14.5 9.5" stroke="#2a9a48" stroke-width="1.3" stroke-linecap="round"/></g></svg>
+      Leaf
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a class="nav-hide-sm" href="/#features">Features</a>
+      <a class="nav-hide-sm" href="/#privacy">Privacy</a>
+      <a class="nav-hide-sm" href="/guides/">Guides</a>
+      <a href="/#download">Download</a>
+      <a href="https://github.com/jagritvats/Leaf-PDF-Viewer">GitHub</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme" hidden>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="page guide">
+  <div class="wrap">
+    <p class="margin-note"><kbd>F12</kbd><span class="where">Document › Sign digitally…</span></p>
+    <article>
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol><li><a href="/">Home</a></li><li><a href="/guides/">Guides</a></li><li aria-current="page">Add a digital signature to a PDF with your certificate</li></ol>
+      </nav>
+      <h1>Add a digital signature to a PDF with your certificate</h1>
+      <p class="updated">Updated 19 November 2026 · Leaf 0.2.2</p>
+      <p class="lede">A digital signature is not a picture of your handwriting. It is cryptographic proof of which certificate signed the document, and it shows whether the file changed afterwards. Leaf adds PAdES signatures with your own certificate file, on your computer.</p>
+      <figure class="shot">
+  <picture>
+    <source type="image/webp" media="(prefers-color-scheme: dark)" data-theme-src="dark" srcset="/img/v1/signature-dark-480.webp 480w, /img/v1/signature-dark-720.webp 720w, /img/v1/signature-dark-1040.webp 1040w, /img/v1/signature-dark-1440.webp 1440w" sizes="(min-width: 48rem) 42rem, calc(100vw - 2rem)">
+    <source type="image/webp" srcset="/img/v1/signature-light-480.webp 480w, /img/v1/signature-light-720.webp 720w, /img/v1/signature-light-1040.webp 1040w, /img/v1/signature-light-1440.webp 1440w" sizes="(min-width: 48rem) 42rem, calc(100vw - 2rem)">
+    <img src="/img/v1/signature-light-720.jpg" width="1920" height="865" alt="A services agreement in Leaf with two visible digital signatures, a banner saying both are valid, and the Signatures panel showing integrity and trust for each signer." loading="lazy" decoding="async">
+  </picture>
+      </figure>
+      <h2 id="steps">Steps</h2>
+      <ol class="steps">
+        <li id="step-1">
+          <h3>Open the PDF and save your changes</h3>
+          <p>Signing works on the saved file. If you have unsaved changes, Leaf asks you to save them first.</p>
+        </li>
+        <li id="step-2">
+          <h3>Start signing</h3>
+          <p>Choose <span class="ui">Document › Sign digitally…</span>.</p>
+        </li>
+        <li id="step-3">
+          <h3>Choose your certificate</h3>
+          <p>Pick your <code>.p12</code> or <code>.pfx</code> file with <span class="ui">Browse…</span> and enter its password. No certificate? <span class="ui">Create a self-signed certificate…</span> makes one from your name, email and organization, protected by a password you choose.</p>
+        </li>
+        <li id="step-4">
+          <h3>Decide how it looks</h3>
+          <p>Under <span class="ui">Place</span>, choose an empty signature field in the form, <span class="ui">New box</span> to draw one on the page next, or <span class="ui">Invisible (no mark on the page)</span>. For a visible signature, the appearance can be text only or your handwritten signature, with <span class="ui">Show name, date and reason</span> if you like. <span class="ui">Reason</span>, <span class="ui">Location</span> and <span class="ui">Contact</span> are optional.</p>
+        </li>
+        <li id="step-5">
+          <h3>Set the options</h3>
+          <p><span class="ui">Certify</span> is meant for the first signature, usually the author's: it states which later changes are allowed (none; form filling and signing; or form filling, signing and comments). Leave it at <span class="ui">No — approval signature</span> otherwise. A <span class="ui">Timestamp server</span> is optional: enter one and the server receives a hash of the signature, never the document.</p>
+        </li>
+        <li id="step-6">
+          <h3>Sign</h3>
+          <p>Save the signed document as a new file (Leaf suggests <code>name-signed.pdf</code>) or sign this file in place. The signature is added to the end of the file, so earlier signatures stay valid.</p>
+        </li>
+      </ol>
+      <h2 id="verify">Check signatures</h2>
+      <p>Open a signed PDF and a banner shows whether its signatures are valid. The Signatures panel (<kbd>F12</kbd>, or <span class="ui">View › Signatures panel</span>) shows, for each one, its integrity, changes made after signing, whether the signer is trusted, and the timestamp. The check runs offline.</p>
+      <p>A signer is trusted when their certificate is one of your trusted certificates or was issued by one of them. By default Leaf also trusts the certificates your system trusts (Settings › Signing). Select a signature and choose <span class="ui">Trust signer</span>, or manage the list in <span class="ui">Document › Trusted certificates…</span>.</p>
+      <h2 id="limits">Limits</h2>
+      <ul>
+        <li><strong>Self-signed certificates</strong> show as “Signer not trusted” for other people until they trust your certificate. You can send them its <code>.pem</code> file from the Signatures panel's Details.</li>
+        <li><strong>Certificate files only:</strong> Leaf signs with <code>.p12</code> or <code>.pfx</code> files. It doesn't use the Windows certificate store or smart cards yet, and doesn't add long-term validation (LTV) data.</li>
+        <li><strong>Changes after signing:</strong> Leaf saves later edits as additions to the file so signatures stay valid. Redaction and Sanitize rewrite the whole file and break them; Leaf warns you before that happens.</li>
+        <li>Whether a signature meets a legal requirement depends on what you sign, where, and with which certificate.</li>
+      </ul>
+      <aside class="guide-cta" aria-labelledby="cta-title">
+        <div>
+          <h2 id="cta-title">Get Leaf</h2>
+          <p>Free and open source, for Windows 10 and 11 and Linux. Works offline.</p>
+        </div>
+        <a class="button" href="/#download">Download Leaf</a>
+      </aside>
+      <nav class="related" aria-labelledby="related-title">
+        <h2 id="related-title">Related guides</h2>
+        <ul>
+          <li><a href="/guides/fill-and-sign-pdf-form/">Fill in and sign a PDF form without uploading it</a><span>Type into fields, tick boxes and add a drawn, typed or scanned signature.</span></li>
+          <li><a href="/guides/redact-pdf-permanently/">Redact a PDF permanently, so the text is really gone</a><span>Remove text, images and hidden data for real, and find every email or phone number first.</span></li>
+          <li><a href="/guides/why-use-an-offline-pdf-editor/">Why use an offline PDF editor</a><span>What happens to a file when you edit it online, and when keeping it local matters.</span></li>
+        </ul>
+      </nav>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© 2026 Synpse Labs</p>
+    <nav aria-label="Footer">
+      <a href="/guides/">Guides</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="https://github.com/jagritvats/Leaf-PDF-Viewer/blob/main/LICENSE">License</a>
+      <a href="https://github.com/jagritvats/Leaf-PDF-Viewer">GitHub</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

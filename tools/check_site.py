@@ -12,6 +12,7 @@ Exits 1 and lists the problems if anything fails.
 """
 from __future__ import annotations
 
+import json
 import pathlib
 import re
 import sys
@@ -38,6 +39,10 @@ class Page(HTMLParser):
         self.desc = False
         self.lang = False
         self.in_script = False
+        self.ld_json = False
+        self.ld_blocks: list[str] = []
+        self.canonical = ""
+        self.title_text = ""
         self.ids: set[str] = set()
         self.anchors: list[str] = []
 
@@ -51,6 +56,9 @@ class Page(HTMLParser):
             self.stack.append(tag)
         if tag == "script":
             self.in_script = True
+            self.ld_json = a.get("type") == "application/ld+json"
+            if self.ld_json:
+                self.ld_blocks.append("")
 
     def handle_startendtag(self, tag, attrs):
         a = dict(attrs)
@@ -74,6 +82,10 @@ class Page(HTMLParser):
             self.h1 += 1
         if tag == "meta" and a.get("name") == "description":
             self.desc = True
+            if not 50 <= len(a.get("content") or "") <= 170:
+                self.err(f"meta description is {len(a.get('content') or '')} characters (aim for 50-170)")
+        if tag == "link" and a.get("rel") == "canonical":
+            self.canonical = a.get("href") or ""
         if tag == "img":
             if "alt" not in a:
                 self.err("img without alt")
@@ -118,10 +130,13 @@ class Page(HTMLParser):
         self.stack.pop()
 
     def handle_data(self, data):
-        if self.in_script and data.strip():
+        if self.in_script and self.ld_json:  # structured data: not executed, so the CSP allows it
+            self.ld_blocks[-1] += data
+        elif self.in_script and data.strip():
             self.err("inline script body")
         if self.stack and self.stack[-1] == "title" and data.strip():
             self.title = True
+            self.title_text += data.strip()
 
 
 def resolve(page: pathlib.Path, ref: str) -> pathlib.Path | None:
@@ -137,6 +152,8 @@ def resolve(page: pathlib.Path, ref: str) -> pathlib.Path | None:
 def main() -> int:
     problems: list[str] = []
     external: set[str] = set()
+    sitemap = set(re.findall(r"<loc>([^<]+)</loc>", (SITE / "sitemap.xml").read_text(encoding="utf-8")))
+    pages: set[str] = set()
     for page in sorted(SITE.rglob("*.html")):
         name = page.relative_to(SITE).as_posix()
         p = Page(name)
@@ -151,6 +168,23 @@ def main() -> int:
             problems.append(f"{name}: missing <title> or lang")
         if not p.desc and name != "404.html":
             problems.append(f"{name}: missing meta description")
+        if len(p.title_text) > 65:
+            problems.append(f"{name}: title is {len(p.title_text)} characters (search results cut at ~60)")
+        for block in p.ld_blocks:
+            try:
+                data = json.loads(block)
+            except ValueError as e:
+                problems.append(f"{name}: invalid JSON-LD: {e}")
+                continue
+            if "@context" not in json.dumps(data):
+                problems.append(f"{name}: JSON-LD without @context")
+        if name != "404.html":
+            url = "https://leafpdf.org/" + (name[: -len("index.html")] if name.endswith("index.html") else name)
+            if p.canonical != url:
+                problems.append(f"{name}: canonical {p.canonical!r}, expected {url!r}")
+            elif url not in sitemap:
+                problems.append(f"{name}: {url} missing from sitemap.xml")
+            pages.add(url)
         for anchor in p.anchors:
             if anchor not in p.ids:
                 problems.append(f"{name}: link to missing #{anchor}")
@@ -163,6 +197,9 @@ def main() -> int:
                 if f'id="{frag}"' not in target.read_text(encoding="utf-8"):
                     problems.append(f"{name}: {ref} points at a missing id")
         external.update(p.external)
+
+    for url in sorted(sitemap - pages):
+        problems.append(f"sitemap.xml: {url} is not a page")
 
     leak = re.compile(r"localhost|127\.0\.0\.1|[A-Za-z]:\\\\|[A-Za-z]:/(?:Users|dev)|/home/\w|"
                       r"[\w.+-]+@[\w-]+\.[\w.]+")

@@ -2,4 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://leafpdf.org/</loc><lastmod>2026-11-19</lastmod></url>
   <url><loc>https://leafpdf.org/privacy/</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://leafpdf.org/guides/</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://leafpdf.org/guides/edit-pdf-text-offline/</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://leafpdf.org/guides/redact-pdf-permanently/</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://leafpdf.org/guides/fill-and-sign-pdf-form/</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://leafpdf.org/guides/merge-pdf-files/</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://leafpdf.org/guides/ocr-scanned-pdf-searchable/</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://leafpdf.org/guides/digitally-sign-pdf/</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://leafpdf.org/guides/pdf-editor-linux/</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://leafpdf.org/guides/why-use-an-offline-pdf-editor/</loc><lastmod>2026-11-19</lastmod></url>
 </urlset>

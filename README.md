@@ -38,7 +38,9 @@ python tools/check_site.py
 
 It checks that every page is well formed, that all local links and images exist, that there are no inline
 scripts or `style` attributes (the Content Security Policy forbids them), that nothing is loaded from another
-origin, and that no local paths or email addresses slipped into the output.
+origin, and that no local paths or email addresses slipped into the output. For search engines it also checks that each page's title and description fit in a
+search result, that its canonical URL is right and listed in `site/sitemap.xml`, and that structured data (JSON-LD)
+parses.
 
 ## Common edits
 
@@ -57,6 +59,12 @@ origin, and that no local paths or email addresses slipped into the output.
   python tools/make_images.py --sheet     # --sheet also writes out/contact-sheet-*.png to check the crops
   python tools/make_brand.py              # icons, favicon.ico, img/og-1200x630.png (PySide6, on Windows)
   ```
+- **Guides** (`site/guides/`) are generated: edit `tools/make_guides.py`, run `python tools/make_guides.py site`,
+  then add any new page to `site/sitemap.xml` (the checks fail until you do). Check menu names and shortcuts against
+  the Leaf source, and bump `DATE`/`VERSION` in the script when a guide changes.
+- **After deploying new or changed pages:** `python tools/indexnow.py` tells Bing (and the engines that use its
+  index, such as DuckDuckGo) to recrawl everything in the sitemap; pass paths (`/guides/`) to send only those.
+  The key is `site/<32 hex>.txt`; keep that file. Google reads the sitemap through Search Console.
 - **Screenshots of the site** for review (Windows, headless Edge, with the preview server running):
   `bash tools/shoot.sh desktop-light 1440 9800 light`. Headless Edge doesn't go below about 490 px wide; for
   phone widths, load the page in an iframe of the width you want.

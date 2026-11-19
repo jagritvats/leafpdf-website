@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Leaf: a local PDF editor for Windows and Linux</title>
-<meta name="description" content="Leaf is a native PDF editor for Windows and Linux that works offline. Edit existing text, redact for real, fill and sign forms, add digital signatures, make scans searchable and organize pages. Open source.">
+<title>Leaf: free, local PDF editor for Windows and Linux</title>
+<meta name="description" content="Leaf is a free, open-source PDF editor for Windows and Linux that works offline. Edit text, redact, fill and sign forms, OCR scans. No account, no uploads.">
 <link rel="canonical" href="https://leafpdf.org/">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f6f8f4" media="(prefers-color-scheme: light)">
@@ -14,14 +14,14 @@
 <meta property="og:site_name" content="Leaf">
 <meta property="og:url" content="https://leafpdf.org/">
 <meta property="og:title" content="Leaf: edit PDFs, keep them yours">
-<meta property="og:description" content="A native PDF editor for Windows and Linux. Works offline, so nothing leaves your computer.">
+<meta property="og:description" content="A free, open-source PDF editor for Windows and Linux. Works offline, so nothing leaves your computer.">
 <meta property="og:image" content="https://leafpdf.org/img/og-1200x630.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Leaf: Edit PDFs. Keep them yours. A native PDF editor for Windows and Linux that works offline, next to a Leaf window editing a report.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Leaf: edit PDFs, keep them yours">
-<meta name="twitter:description" content="A native PDF editor for Windows and Linux. Works offline, so nothing leaves your computer.">
+<meta name="twitter:description" content="A free, open-source PDF editor for Windows and Linux. Works offline, so nothing leaves your computer.">
 <meta name="twitter:image" content="https://leafpdf.org/img/og-1200x630.png">
 <meta name="twitter:image:alt" content="Leaf: Edit PDFs. Keep them yours. A native PDF editor for Windows and Linux that works offline, next to a Leaf window editing a report.">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -29,6 +29,125 @@
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://leafpdf.org/#website",
+   "url": "https://leafpdf.org/",
+   "name": "Leaf",
+   "alternateName": "Leaf PDF Editor",
+   "publisher": {
+    "@id": "https://leafpdf.org/#org"
+   }
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://leafpdf.org/#org",
+   "name": "Synpse Labs",
+   "url": "https://leafpdf.org/",
+   "logo": "https://leafpdf.org/icons/icon-512.png"
+  },
+  {
+   "@type": "SoftwareApplication",
+   "@id": "https://leafpdf.org/#app",
+   "name": "Leaf PDF Editor",
+   "alternateName": "Leaf",
+   "url": "https://leafpdf.org/",
+   "description": "A free, open-source PDF editor for Windows and Linux that works offline: edit existing text, redact, fill and sign forms, add digital signatures, make scans searchable with OCR and organize pages.",
+   "applicationCategory": "BusinessApplication",
+   "applicationSubCategory": "PDF editor",
+   "operatingSystem": "Windows 10, Windows 11, Linux",
+   "softwareVersion": "0.2.2",
+   "downloadUrl": "https://github.com/jagritvats/Leaf-PDF-Viewer/releases/latest",
+   "installUrl": "https://leafpdf.org/#download",
+   "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   },
+   "screenshot": "https://leafpdf.org/img/v1/hero-light-1280.jpg",
+   "image": "https://leafpdf.org/img/og-1200x630.png",
+   "featureList": [
+    "Edit existing PDF text",
+    "Permanent redaction",
+    "Search and redact",
+    "Fill PDF forms",
+    "Sign PDFs",
+    "Digital certificate signatures (PAdES)",
+    "OCR for scanned PDFs",
+    "Merge, split, rotate and reorder pages",
+    "Highlights, comments and sticky notes",
+    "Works offline"
+   ],
+   "author": {
+    "@id": "https://leafpdf.org/#org"
+   },
+   "sameAs": [
+    "https://github.com/jagritvats/Leaf-PDF-Viewer"
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://leafpdf.org/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Is Leaf really free?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Leaf is free and open source under the AGPL-3.0. There is no trial, no paid tier, no account and no watermark on the files you save."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does Leaf upload my PDFs?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Leaf is a local PDF editor: documents are opened, edited and saved on your computer and are never uploaded. It works fully offline and goes online only when you ask it to, for example to download an extra OCR language."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can Leaf edit the existing text in a PDF?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Pick the Edit text tool, click a line and type: Leaf rewrites it in the document's own embedded font, size and color, and removes the old words from the file when you save. Where it can't make a change faithfully, for example in Arabic, Hebrew or Indic scripts, it tells you instead of guessing."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does redaction really remove the text?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. When you save, the text, image pixels, drawings, annotations, form fields and links under each redaction mark are removed from the file, not just covered with a black box."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do I need admin rights to install Leaf on Windows?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. The installer installs Leaf for your user only, with no admin prompt. There is also a portable zip you can run from any folder."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does Leaf run on Linux and Mac?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Leaf runs on Windows 10 and 11 (x64) and on Linux (x86_64) as an AppImage or a tarball. There is no macOS version yet."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
 <script src="/assets/theme.js"></script>
 <script src="/assets/site.js" defer></script>
 </head>
@@ -44,6 +163,7 @@
     <nav class="nav" aria-label="Main">
       <a class="nav-hide-sm" href="#features">Features</a>
       <a class="nav-hide-sm" href="#privacy">Privacy</a>
+      <a class="nav-hide-sm" href="/guides/">Guides</a>
       <a href="#download">Download</a>
       <a href="https://github.com/jagritvats/Leaf-PDF-Viewer">GitHub</a>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme" hidden>
@@ -59,7 +179,7 @@
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap">
     <h1 id="hero-title"><span class="edit-line"><span>Edit PDFs.</span><span>Keep them <span class="nowrap">yours.<span class="caret" aria-hidden="true"></span></span></span></span></h1>
-    <p class="hero-lede">A native PDF editor for Windows and Linux. Leaf works offline, so your documents never leave your computer.</p>
+    <p class="hero-lede">A free, open-source PDF editor for Windows and Linux. Leaf works offline, so your documents never leave your computer.</p>
     <div class="hero-actions">
       <a class="button" id="hero-download" data-asset="setup" href="https://github.com/jagritvats/Leaf-PDF-Viewer/releases/latest">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
@@ -371,6 +491,42 @@
   </div>
 </section>
 
+<section class="open faq" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="rail-space"></div>
+    <div class="body">
+      <h2 id="faq-title">Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Is Leaf really free?</summary>
+          <p>Yes. Leaf is free and open source under the AGPL-3.0. There is no trial, no paid tier, no account and no watermark on the files you save.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does Leaf upload my PDFs?</summary>
+          <p>No. Leaf is a local PDF editor: documents are opened, edited and saved on your computer and are never uploaded. It works fully offline and goes online only when you ask it to, for example to download an extra OCR language.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can Leaf edit the existing text in a PDF?</summary>
+          <p>Yes. Pick the Edit text tool, click a line and type: Leaf rewrites it in the document&#x27;s own embedded font, size and color, and removes the old words from the file when you save. Where it can&#x27;t make a change faithfully, for example in Arabic, Hebrew or Indic scripts, it tells you instead of guessing.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does redaction really remove the text?</summary>
+          <p>Yes. When you save, the text, image pixels, drawings, annotations, form fields and links under each redaction mark are removed from the file, not just covered with a black box.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need admin rights to install Leaf on Windows?</summary>
+          <p>No. The installer installs Leaf for your user only, with no admin prompt. There is also a portable zip you can run from any folder.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does Leaf run on Linux and Mac?</summary>
+          <p>Leaf runs on Windows 10 and 11 (x64) and on Linux (x86_64) as an AppImage or a tarball. There is no macOS version yet.</p>
+        </details>
+      </div>
+      <p class="faq-more">Step-by-step help is in the <a href="/guides/">guides</a>.</p>
+    </div>
+  </div>
+</section>
+
 <section class="open" aria-labelledby="open-title">
   <div class="wrap">
     <div class="rail-space"></div>
@@ -393,6 +549,7 @@
   <div class="wrap">
     <p>© 2026 Synpse Labs</p>
     <nav aria-label="Footer">
+      <a href="/guides/">Guides</a>
       <a href="/privacy/">Privacy</a>
       <a href="https://github.com/jagritvats/Leaf-PDF-Viewer/blob/main/LICENSE">License</a>
       <a href="https://github.com/jagritvats/Leaf-PDF-Viewer">GitHub</a>

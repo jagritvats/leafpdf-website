@@ -320,3 +320,82 @@ pre.code .p { color: var(--code-dim); user-select: none; }
 .page .margin-note { padding-top: 1rem; }
 @media (max-width: 48rem) { .page .wrap { grid-template-columns: minmax(0, 1fr); } .page .margin-note { display: none; } }
 .page code { white-space: normal; overflow-wrap: anywhere; }
+
+/* Guides: the hub (/guides/) and each how-to page. Built on the text-page layout (.page) above. */
+.crumbs { margin: 0 0 1.5rem; font-size: .9rem; color: var(--ink-2); }
+.page .crumbs ol { display: flex; flex-wrap: wrap; gap: .2rem .5rem; margin: 0; padding: 0; list-style: none; }
+.page .crumbs li { margin: 0; }
+.crumbs li + li::before { content: "›"; margin-right: .5rem; color: var(--ink-2); }
+.crumbs a { color: var(--ink-2); }
+.crumbs a:hover { color: var(--leaf); }
+.crumbs [aria-current] { color: var(--ink); }
+.guide .updated { margin-bottom: 1.25rem; font-size: .925rem; }
+.guide .lede { font-size: clamp(1.1rem, 1rem + .35vw, 1.25rem); line-height: 1.5; color: var(--ink-2); margin: 0 0 2rem; }
+.guide h3 { font-family: var(--sans); font-size: 1.075rem; font-weight: 600; line-height: 1.4; margin: 0 0 .35rem; }
+.guide .ui { font-weight: 600; }
+.guide ol { padding-left: 1.4rem; margin: 0 0 1em; }
+.guide ol li, .guide ul li { margin-bottom: .6rem; }
+.guide .shot { margin: 0 0 2.25rem; }
+.guide .shot.narrow { max-width: 26rem; }
+.guide pre.code { margin: .25rem 0 1rem; font-size: .85rem; }
+.guide .callout { margin: 1.25rem 0; }
+
+/* Numbered steps: a ringed number on a thin rail, like Leaf's edit outline */
+.guide ol.steps { list-style: none; counter-reset: step; padding: 0; margin: 1.5rem 0 1rem; }
+.guide ol.steps > li { counter-increment: step; position: relative; min-width: 0; margin: 0; padding: 0 0 1.75rem 3rem; }
+.guide ol.steps > li::before {
+  content: counter(step); position: absolute; left: 0; top: -.15rem;
+  display: grid; place-items: center; width: 2rem; height: 2rem;
+  font: 600 .95rem/1 var(--sans); color: var(--edit); background: var(--surface);
+  border: 2px solid var(--edit); border-radius: 50%;
+}
+.guide ol.steps > li::after { content: ""; position: absolute; left: calc(1rem - 1px); top: 2.15rem; bottom: .35rem; border-left: 2px solid var(--line); }
+.guide ol.steps > li:last-child { padding-bottom: .5rem; }
+.guide ol.steps > li:last-child::after { display: none; }
+.guide ol.steps p { margin-bottom: .6em; }
+.guide ol.steps ul { margin: .25rem 0 .6em; }
+.guide ol.steps h3 { padding-top: .1rem; }
+
+/* Download call to action */
+.guide-cta {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 1.5rem;
+  margin: 3rem 0 0; padding: 1.4rem 1.5rem; background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+}
+.page .guide-cta h2 { font-size: 1.5rem; margin: 0 0 .25rem; }
+.guide-cta p { margin: 0; color: var(--ink-2); font-size: .95rem; }
+
+/* Related guides */
+.page .related h2 { font-size: 1.35rem; margin: 2.75rem 0 .9rem; }
+.page .related ul { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+.page .related li { margin: 0; padding: .8rem 0; border-bottom: 1px solid var(--line); }
+.related a { display: block; font-weight: 600; }
+.related span { display: block; font-size: .925rem; color: var(--ink-2); }
+
+/* Hub: one card per guide */
+.page .guide-list { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: .85rem; }
+.page .guide-list li { margin: 0; }
+.guide-list a {
+  display: block; padding: 1.1rem 1.25rem; text-decoration: none; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+}
+.guide-list a:hover { border-color: var(--edit); background: var(--sunk); color: var(--ink); }
+.guide-list .guide-title { display: block; font-family: var(--serif); font-size: 1.35rem; line-height: 1.25; color: var(--leaf); margin-bottom: .3rem; }
+.guide-list .guide-sum { display: block; font-size: .95rem; color: var(--ink-2); }
+.hub-more { color: var(--ink-2); font-size: .95rem; }
+@media (max-width: 30rem) {
+  .guide ol.steps > li { padding-left: 2.6rem; }
+  .guide-cta { padding: 1.2rem; }
+  .guide-cta .button { width: 100%; justify-content: center; }
+}
+
+/* FAQ (home page) */
+.faq .body { padding-bottom: clamp(1rem, 3vw, 2rem); }
+.faq-list { border-top: 1px solid var(--line); margin-top: 1.25rem; }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item summary { cursor: pointer; list-style: none; padding: 1rem 2rem 1rem 0; font-weight: 600; position: relative; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; position: absolute; right: .25rem; top: .85rem; font-size: 1.3rem; font-weight: 400; color: var(--ink-2, currentColor); }
+.faq-item[open] summary::after { content: "\2212"; }
+.faq-item summary:focus-visible { outline-offset: 2px; }
+.faq-item p { margin: 0 0 1.1rem; max-width: 46rem; }
+.faq-more { margin-top: 1.25rem; }
