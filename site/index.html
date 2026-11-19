@@ -181,6 +181,7 @@
     <h1 id="hero-title"><span class="edit-line"><span>Edit PDFs.</span><span>Keep them <span class="nowrap">yours.<span class="caret" aria-hidden="true"></span></span></span></span></h1>
     <p class="hero-lede">A free, open-source PDF editor for Windows and Linux. Leaf works offline, so your documents never leave your computer.</p>
     <div class="hero-actions">
+      <p class="hero-platform" id="hero-platform" hidden></p>
       <a class="button" id="hero-download" data-asset="setup" href="https://github.com/jagritvats/Leaf-PDF-Viewer/releases/latest">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
         <span class="label">Download for Windows</span> <span class="size"></span>
@@ -429,8 +430,8 @@
     </div>
 
     <div class="platforms">
-      <section class="platform" aria-labelledby="dl-win">
-        <h3 id="dl-win">Windows</h3>
+      <section class="platform" id="platform-windows" aria-labelledby="dl-win">
+        <h3 id="dl-win">Windows <span class="yours-tag" hidden>Your system</span></h3>
         <div class="file">
           <div>
             <h4>Installer <span class="tag">(recommended)</span></h4>
@@ -455,8 +456,8 @@
         </div>
       </section>
 
-      <section class="platform" aria-labelledby="dl-linux">
-        <h3 id="dl-linux">Linux</h3>
+      <section class="platform" id="platform-linux" aria-labelledby="dl-linux">
+        <h3 id="dl-linux">Linux <span class="yours-tag" hidden>Your system</span></h3>
         <div class="file">
           <div>
             <h4>AppImage</h4>
@@ -470,6 +471,19 @@
             <p>The app folder with its desktop entry, metadata, icons and Dolphin service menu, for packaging (AUR, Flatpak).</p>
           </div>
           <a class="button quiet" data-asset="tarball" href="https://github.com/jagritvats/Leaf-PDF-Viewer/releases/latest">Download <span class="size"></span></a>
+        </div>
+      </section>
+
+      <section class="platform" id="platform-mac" aria-labelledby="dl-mac" data-mac-live="false">
+        <h3 id="dl-mac">macOS <span class="yours-tag" hidden>Your system</span></h3>
+        <div class="file">
+          <div>
+            <h4>Disk image</h4>
+            <p class="mac-soon">Leaf for Mac is on its way. Watch the <a href="https://github.com/jagritvats/Leaf-PDF-Viewer/releases">releases on GitHub</a> to hear when it's out.</p>
+            <p class="mac-live">Apple silicon (M1 or newer), macOS 14 or later. Open the disk image and drag Leaf to Applications.</p>
+          </div>
+          <span class="soon mac-soon">Coming soon</span>
+          <a class="button mac-live" data-asset="mac" href="https://github.com/jagritvats/Leaf-PDF-Viewer/releases/latest">Download <span class="size"></span></a>
         </div>
       </section>
     </div>

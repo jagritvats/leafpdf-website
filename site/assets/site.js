@@ -70,16 +70,67 @@
   syncPictures();
   syncToggle();
 
-  // ---- Linux visitors get the AppImage as the main download -------------------------------------------------
+  // ---- The visitor's platform ------------------------------------------------------------------------------
+  // The page's default is the Windows installer. Linux visitors get the AppImage; Mac visitors get the disk image
+  // once a release has one (until then, a note instead of a Windows button); phones and tablets get a note,
+  // since Leaf is a desktop app. The visitor's platform card is marked and listed first.
   var ua = navigator.userAgent || "";
-  var onLinux = /Linux|X11/.test(ua) && !/Android|CrOS/.test(ua);
+  var uad = navigator.userAgentData;
+  function detectPlatform() {
+    var p = (uad && uad.platform) || navigator.platform || "";
+    if ((uad && uad.mobile) || /Android|iPhone|iPad|iPod/.test(ua)) return "mobile";
+    if (/Mac/.test(p) || /Macintosh/.test(ua)) return navigator.maxTouchPoints > 1 ? "mobile" : "mac";  // iPadOS says "Mac"
+    if (/CrOS|Chrome OS|ChromeOS/.test(ua + p)) return "other";
+    if (/Linux|X11/.test(ua) || /Linux/.test(p)) return "linux";  // a Windows browser never says X11 or Linux
+    if (/Win/.test(p) || /Windows/.test(ua)) return "windows";
+    return "other";
+  }
+  var platform = detectPlatform();
+  root.setAttribute("data-platform", platform);
+
   var heroButton = document.getElementById("hero-download");
-  if (onLinux && heroButton) {
-    heroButton.setAttribute("data-asset", "appimage");
-    var label = heroButton.querySelector(".label");
-    if (label) label.textContent = "Download for Linux";
-    var other = document.getElementById("hero-other");
-    if (other) other.textContent = "Windows and other downloads";
+  var heroLabel = heroButton && heroButton.querySelector(".label");
+  var heroOther = document.getElementById("hero-other");
+  var heroNote = document.getElementById("hero-platform");
+
+  function heroMessage(text) {
+    if (heroButton) heroButton.hidden = !!text;
+    if (heroNote) { heroNote.textContent = text || ""; heroNote.hidden = !text; }
+  }
+
+  function markYours(id) {
+    var card = document.getElementById(id);
+    if (!card) return;
+    card.classList.add("yours");
+    var tag = card.querySelector(".yours-tag");
+    if (tag) tag.hidden = false;
+  }
+
+  if (platform === "windows") {
+    markYours("platform-windows");
+  } else if (platform === "linux") {
+    markYours("platform-linux");
+    if (heroButton) heroButton.setAttribute("data-asset", "appimage");
+    if (heroLabel) heroLabel.textContent = "Download for Linux";
+    if (heroOther) heroOther.textContent = "Windows and other downloads";
+  } else if (platform === "mac") {
+    markYours("platform-mac");
+    if (heroButton) heroButton.setAttribute("data-asset", "mac");
+    if (heroLabel) heroLabel.textContent = "Download for Mac";
+    if (heroOther) heroOther.textContent = "Windows and Linux downloads";
+    heroMessage("Leaf for Mac is on its way. Today it runs on Windows and Linux.");
+  } else if (platform === "mobile") {
+    if (heroOther) heroOther.textContent = "See all downloads";
+    heroMessage("Leaf is a desktop app for Windows and Linux. Open this page on your computer to download it.");
+  }
+
+  function macReleased() {
+    var card = document.getElementById("platform-mac");
+    if (card) card.setAttribute("data-mac-live", "true");
+    if (platform === "mac") {
+      heroMessage("");
+      if (heroOther) heroOther.textContent = "Other downloads";
+    }
   }
 
   // ---- Latest release from GitHub -------------------------------------------------------------------------
@@ -92,6 +143,7 @@
     zip: /-windows-x64\.zip$/i,
     appimage: /x86_64\.AppImage$/i,
     tarball: /-linux-x86_64\.tar\.gz$/i,
+    mac: /-macos-arm64\.dmg$/i,
     sums: /^SHA256SUMS/i
   };
 
@@ -107,6 +159,7 @@
         if (PATTERNS[key].test(a.name) && /^https:\/\/github\.com\//.test(a.browser_download_url)) found[key] = a;
       }
     });
+    if (found.mac) macReleased();
     var links = document.querySelectorAll("[data-asset]");
     for (var i = 0; i < links.length; i++) {
       var a = found[links[i].getAttribute("data-asset")];

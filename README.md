@@ -47,6 +47,12 @@ parses.
 - **Microsoft Store goes live:** in `site/index.html`, change `data-store-live="false"` to `"true"` on the
   downloads section (`<section class="downloads" id="download" ...>`). The "Coming soon" note is then replaced by
   a "Get it from the Store" button linking to `https://apps.microsoft.com/detail/9P865XPB1QP3`.
+- **Leaf for Mac ships:** nothing to switch. When the latest release has a `*-macos-arm64.dmg`, the macOS card
+  shows its Download button instead of "Coming soon", and Mac visitors get "Download for Mac" in the hero. Then
+  add macOS to the system requirements, the FAQ answer and `operatingSystem` in the JSON-LD (`site/index.html`).
+- **Platform detection** (`site/assets/site.js`): Windows, Linux and Mac visitors get their own hero button and
+  see their platform's card first; phones and tablets get a note that Leaf is a desktop app. Without JavaScript
+  the page shows the Windows installer.
 - **A new Leaf release:** nothing to do. The buttons, version and file sizes come from GitHub's latest release.
   The asset names must keep their patterns (`*-windows-x64-setup.exe`, `*-windows-x64.zip`, `*x86_64.AppImage`,
   `*-linux-x86_64.tar.gz`, `SHA256SUMS*`); see `PATTERNS` in `site/assets/site.js`.
