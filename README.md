@@ -44,9 +44,8 @@ parses.
 
 ## Common edits
 
-- **Microsoft Store goes live:** in `site/index.html`, change `data-store-live="false"` to `"true"` on the
-  downloads section (`<section class="downloads" id="download" ...>`). The "Coming soon" note is then replaced by
-  a "Get it from the Store" button linking to `https://apps.microsoft.com/detail/9P865XPB1QP3`.
+- **Microsoft Store:** live since 20 Nov 2026 (`data-store-live="true"` on the downloads section in
+  `site/index.html`). Setting it back to `"false"` swaps the "Get it from the Store" button for "Coming soon".
 - **Leaf for Mac ships:** nothing to switch. When the latest release has a `*-macos-arm64.dmg`, the macOS card
   shows its Download button instead of "Coming soon", and Mac visitors get "Download for Mac" in the hero. Then
   add macOS to the system requirements, the FAQ answer and `operatingSystem` in the JSON-LD (`site/index.html`).
