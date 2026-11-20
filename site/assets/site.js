@@ -71,7 +71,7 @@
   syncToggle();
 
   // ---- The visitor's platform ------------------------------------------------------------------------------
-  // The page's default is the Windows installer. Linux visitors get the AppImage; Mac visitors get the disk image
+  // The page's default is the Microsoft Store (Windows 10 and 11, like Leaf itself). Linux visitors get the AppImage; Mac visitors get the disk image
   // once a release has one (until then, a note instead of a Windows button); phones and tablets get a note,
   // since Leaf is a desktop app. The visitor's platform card is marked and listed first.
   var ua = navigator.userAgent || "";
@@ -98,6 +98,15 @@
     if (heroNote) { heroNote.textContent = text || ""; heroNote.hidden = !text; }
   }
 
+  // Linux and Mac visitors: the hero button becomes a GitHub download (the release page until the API answers)
+  function heroAsset(asset, label) {
+    if (heroButton) {
+      heroButton.setAttribute("data-asset", asset);
+      heroButton.href = "https://github.com/jagritvats/Leaf-PDF-Viewer/releases/latest";
+    }
+    if (heroLabel) heroLabel.textContent = label;
+  }
+
   function markYours(id) {
     var card = document.getElementById(id);
     if (!card) return;
@@ -110,13 +119,11 @@
     markYours("platform-windows");
   } else if (platform === "linux") {
     markYours("platform-linux");
-    if (heroButton) heroButton.setAttribute("data-asset", "appimage");
-    if (heroLabel) heroLabel.textContent = "Download for Linux";
+    heroAsset("appimage", "Download for Linux");
     if (heroOther) heroOther.textContent = "Windows and other downloads";
   } else if (platform === "mac") {
     markYours("platform-mac");
-    if (heroButton) heroButton.setAttribute("data-asset", "mac");
-    if (heroLabel) heroLabel.textContent = "Download for Mac";
+    heroAsset("mac", "Download for Mac");
     if (heroOther) heroOther.textContent = "Windows and Linux downloads";
     heroMessage("Leaf for Mac is on its way. Today it runs on Windows and Linux.");
   } else if (platform === "mobile") {
